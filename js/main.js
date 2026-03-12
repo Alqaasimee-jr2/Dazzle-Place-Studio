@@ -32,22 +32,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll effect for navbar
     const navbar = document.getElementById('navbar');
+    const heroBg = document.querySelector('.hero-bg-parallax');
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+        const scrolled = window.pageYOffset;
+        
+        // Navbar scroll state
+        if (scrolled > 50) {
+            navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.6)';
             navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.98)';
+            navbar.style.height = '70px'; // Shrink on scroll
         } else {
             navbar.style.boxShadow = 'none';
             navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+            navbar.style.height = 'var(--nav-height)';
+        }
+
+        // Parallax effect
+        if (heroBg) {
+            heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
         }
     });
 
-    // Intersection Observer for scroll animations (to be used on sections)
+    // Intersection Observer for scroll animations
     const fadeElements = document.querySelectorAll('.animate-on-scroll');
     
     const fadeOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.15,
+        rootMargin: "0px 0px -100px 0px" // Better reveal timing
     };
     
     const fadeObserver = new IntersectionObserver((entries, observer) => {
