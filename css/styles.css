@@ -168,10 +168,20 @@ h6 {
     height: 100%;
 }
 
-.logo img {
-    height: 45px;
+.navbar .logo img {
+    height: 70px;
     width: auto;
     object-fit: contain;
+}
+
+.footer .logo {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.footer .logo img {
+    height: 100px;
+    width: auto;
 }
 
 .nav-links {
@@ -729,8 +739,8 @@ h6 {
         height: 70px;
     }
 
-    .logo img {
-        height: 38px;
+    .navbar .logo img {
+        height: 50px;
     }
 
     .section-padding {
